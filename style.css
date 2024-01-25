@@ -50,29 +50,49 @@ html,body{
     font-weight: 500;
 }
 
-#loader h1 span {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
 
 #green {
     /* display: none; */
     width: 100%;
     position: absolute;
     bottom: 0;
-    height: 0;
+    height: 0px;
     z-index: 9999;
-    background-color: rgb(8, 234, 230);
+    background-color: #14CF93;
 }
 
-#home {
-    height: 100vw;
+#white{
     width: 100%;
+    height: 0;
     position: absolute;
-    /* bottom: 0; */
-    background-color : #dadada;
+    bottom: 0;
+    z-index: 9999;
+    background-color: whitesmoke;
 }
 
-#home #nav {
+.parent{
+    display: block;
+}
+
+.child{
+    display: block;
+}
+
+.reveal .parent {
+    display: block;
+    overflow: hidden;
+}
+
+.reveal .parent .child {
+    display: block;
+}
+
+.parent .child span {
+    display: inline-block;
+
+}
+
+#white #nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -83,7 +103,7 @@ html,body{
 
 #nav a {
     text-decoration: none;
-    position: relative;/*this is important*/
+    position: relative;
     text-transform: uppercase;
     font-weight: 300;
     font-size: 12px;
@@ -130,26 +150,6 @@ html,body{
 /*underline hover effect*/
 
 
-.parent{
-    display: block;
-}
-
-.child{
-    display: block;
-}
-
-.reveal .parent {
-    display: block;
-    overflow: hidden;
-}
-
-.reveal .parent .child {
-    display: block;
-}
-
-.parent .child span {
-    display: inline-block;
-}
 
 .row {
     margin-top : 5vw;
