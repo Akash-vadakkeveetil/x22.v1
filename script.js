@@ -18,7 +18,7 @@ function revealToSpan() {
 
 revealToSpan();
 
-
+//first text moving up animation
 gsap.to(".parent .child",{
     y:"-100%",
     duration:1,
@@ -54,4 +54,17 @@ tl
 }
 
 loaderAnimation();
+
+function animateRowH1() {
+    gsap.set(".row h1 .parent .child", { y: "100%" })
+    gsap.to(".row h1 .parent .child", {
+        y: "0%",
+        duration: 2.6,
+        delay: 0.5,
+        ease: Expo.easeInOut
+    });
+}
+
+animateRowH1();
+
 

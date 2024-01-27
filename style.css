@@ -1,8 +1,9 @@
 html,body{
     height: 100%;/*made the html and body to 100 so that the main does face any issue while using 100*/
     width: 100%;
-    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-y: scroll;
     overflow-x: hidden;
+    scroll-behavior: smooth;
     margin: 0;
 }
 *{/* ever font of every one*/
@@ -50,6 +51,10 @@ html,body{
     font-weight: 500;
 }
 
+#loader h1 span #mid{
+    color :#14CF93;
+    font-style: italic;
+}
 
 #green {
     /* display: none; */
@@ -166,9 +171,10 @@ html,body{
 
 .row h1 {
 
-       font-size:13vw;
-       font-weight: 500;
-
+    position: relative;
+    font-size:13vw;
+    font-weight: 500;
+   
 }
 
 .row text {
@@ -181,15 +187,33 @@ html,body{
     font-weight: 500;
 }
 
-.row:nth-child(3)/*That second h1 */
-{
+.row:nth-of-type(3) {
     margin-top: 0;
     color: green;
 }
+
 
 
 .row svg{
     height: 200px;
     margin: 0 3vw;
 
+}
+
+
+.contacts{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(38, 37, 37);
+        color: white;
+}
+
+.contacts .about-me #h1{
+        width: 30%;
+        margin: 50px auto 0 auto;
+        font-family: 'Sacramento', cursive;
+        font-size: 562.5%;
+        color: #66BFBF;
+        line-height: 1;
 }
