@@ -55,6 +55,21 @@ tl
 
 loaderAnimation();
 
+function animateNav() {
+    gsap.set("#nav",{y:"-100%",opacity :0});
+
+    var tl = gsap.timeline();
+
+    tl.to("#nav",{
+        y:"0%",
+        opacity :1,
+        duration:1.6,
+        delay:.8,
+        ease:Expo.easeInOut
+    });
+}
+animateNav();
+
 function animateRowH1() {
     gsap.set(".row h1 .parent .child", { y: "100%" })
     gsap.to(".row h1 .parent .child", {
