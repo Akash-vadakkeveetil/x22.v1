@@ -83,3 +83,36 @@ function animateRowH1() {
 animateRowH1();
 
 
+
+
+function updateTime() {
+    // Get the current date and time
+    var currentDate = new Date();
+
+    // Extract the hours, minutes, and seconds
+    var hours = currentDate.getHours();
+    var minutes = currentDate.getMinutes();
+    var seconds = currentDate.getSeconds();
+
+    // Determine whether it's AM or PM
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+
+    // Convert hours to 12-hour format
+    hours = hours % 12 || 12;
+
+    // Get the GMT offset in hours
+    var gmtOffset = -currentDate.getTimezoneOffset() / 60;
+
+    // Format the time as hh:mm:ss AM/PM +GMT
+    var formattedTime = `${hours}:${minutes}:${seconds} ${ampm} +GMT${gmtOffset >= 0 ? '+' : ''}${gmtOffset}`;
+
+    // Update the content of the relevant h5 elements
+    document.getElementById("currentTime").textContent = formattedTime;
+    document.getElementById("currentTimeLabel").textContent = "MY LOCAL TIME +GMT";
+
+    // Call this function every second to update the time
+    setTimeout(updateTime, 1000);
+}
+
+// Call the updateTime function to start updating the time
+updateTime();

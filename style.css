@@ -1,11 +1,34 @@
 html,body{
     height: 100%;/*made the html and body to 100 so that the main does face any issue while using 100*/
     width: 100%;
-    overflow-y: scroll;
     overflow-x: hidden;
     scroll-behavior: smooth;
     margin: 0;
 }
+
+/* Webkit Scrollbar Styles */
+body::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(6, 212, 253); /* Color of the scrollbar thumb */
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the scrollbar track */
+}
+
+
+
+
+.rethink-sans-header {
+  font-family: "Rethink Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
 *{/* ever font of every one*/
     margin: 0;
     padding: 0;
@@ -184,9 +207,10 @@ html,body{
 
 }   
 .row h5{
-    opacity: .6;
-    font-size: 11px;
+    opacity: .7;
+    font-size: 13px;
     font-weight: 500;
+    font-family: "Archivo Black", sans-serif;
 }
 
 .row:nth-of-type(3) {
@@ -200,5 +224,28 @@ html,body{
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background-color: rgb(236, 202, 202);
+    background-color: whitesmoke;
+    /* border-radius: 20px; */
+}
+
+#works h1{
+    margin-top: 60px;
+    padding-top: 28px;
+    position: relative;
+    /* font-family: "Archivo Black", sans-serif; */
+    font-family: "Rethink Sans", sans-serif;
+    font-size:5.5vw;
+    color: rgb(2, 255, 2);
+    text-align: center;
+}
+
+#works p{
+    margin-top: 60px;
+    padding-top: 28px;
+    position: relative;
+    /* font-family: "Archivo Black", sans-serif; */
+    font-family: "Rethink Sans", sans-serif;
+    font-size:2.5vw;
+    color: rgb(2, 255, 2);
+    text-align: center;
 }
