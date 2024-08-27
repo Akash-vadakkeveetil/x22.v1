@@ -1,0 +1,5 @@
+- next thing is the loading animation working on it
+- big page for project showcasing
+- skills with scrolling side ways animation needed
+- testimonials needed
+- also after writing some blogs should grow it big

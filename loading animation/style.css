@@ -1,0 +1,54 @@
+:root {
+    --color: #525252;
+  }
+
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  /* above things added later during time of loader */
+  overflow-x: hidden;  /* prevents the horizontal scorlling  */
+  background-color: #f6d4b1;
+  font-family: "chill", sans-serif;
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%; /* to keep fontsize constant across all devices webs */
+}
+
+
+.overlay-load {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  display: flex;
+}
+
+.bar {
+  width: 10vw;
+  height: 105vh;
+  /* since we have 10 bars this will ensure that we will cover entire page */
+  background: #525252;
+}
+
+.counter{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  /* to place it at bottom end */
+  z-index: 10000;
+  color: #f6d4b1;
+  padding: 0.2em 0.4em;
+  font-size: 15vw;
+}
+
+
