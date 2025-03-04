@@ -1,0 +1,59 @@
+<!-- blog.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - My Website</title>
+    <link rel="stylesheet" href="blogStyles.css">
+</head>
+<body>
+    <section class="blog-container">
+        <div class="blog-card" onclick="openBlog('post1')">
+            <h2>First Blog Post</h2>
+            <p class="blog-date">Published on March 4, 2025</p>
+            <p class="blog-excerpt">A brief excerpt of the blog post...</p>
+        </div>
+        
+        <div class="blog-card" onclick="openBlog('post2')">
+            <h2>Second Blog Post</h2>
+            <p class="blog-date">Published on March 3, 2025</p>
+            <p class="blog-excerpt">A brief excerpt of the blog post...</p>
+        </div>
+    </section>
+
+    <!-- Popup Modal -->
+    <div id="blog-modal" class="modal" onclick="closeBlogOutside(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeBlog()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-date"></p>
+            <p id="modal-content"></p>
+        </div>
+    </div>
+
+    <script>
+        const blogPosts = {
+            post1: { title: "First Blog Post", date: "March 4, 2025", content: "This is the full content of the first blog post." },
+            post2: { title: "Second Blog Post", date: "March 3, 2025", content: "This is the full content of the second blog post.We have to write some more stuff to it and yes yet we are planning to build this shist to above ground and the skill which we have in coding and to code will be mesmerizing" }
+        };
+
+        function openBlog(postId) {
+            document.getElementById("modal-title").innerText = blogPosts[postId].title;
+            document.getElementById("modal-date").innerText = "Published on " + blogPosts[postId].date;
+            document.getElementById("modal-content").innerText = blogPosts[postId].content;
+            document.getElementById("blog-modal").style.display = "flex";
+        }
+
+        function closeBlog() {
+            document.getElementById("blog-modal").style.display = "none";
+        }
+
+        function closeBlogOutside(event) {
+            if (event.target.id === "blog-modal") {
+                closeBlog();
+            }
+        }
+    </script>
+</body>
+</html>
