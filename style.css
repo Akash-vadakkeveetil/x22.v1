@@ -703,3 +703,28 @@ html[data-scroll="true"] #tip-scroll {
   }
 }
 
+
+.top-button {
+  position: relative;
+  font-family: "chill", sans-serif;
+  font-size: 18px;
+  display: inline-flex;
+  gap: 0.25rem;
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+  background-color: var(--color);
+  /* color: #f6d4b1; */
+  color: #faf0e6;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 8px 26px;
+  top: 23.5px;
+  border: #f6d4b1 solid 1px;
+  border-radius: 7px;
+  text-decoration: none;
+}
+
+.top-button:hover{
+  transform: scale(1.1);
+  box-shadow: 8px 8px 6px rgba(82, 82, 82, 0.25);
+  z-index: 2;
+}
