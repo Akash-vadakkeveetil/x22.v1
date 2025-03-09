@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Timeline</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* Root Variables */
+        :root {
+            --color: #525252;
+        }
+
+        /* Import Custom Fonts */
+        @font-face {
+            font-family: 'public-pixel';
+            src: url("fonts/public-pixel.woff");
+        }
+        @font-face {
+            font-family: 'chill';
+            src: url("fonts/chill.woff");
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'chill', sans-serif;
+            background-color: #f9e6d0;
+            color: var(--color);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Timeline Container */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            margin-top: 20px;
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* Timeline Line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #007bff;
+            transform: translateX(-50%);
+        }
+
+        /* Timeline Entry */
+        .entry {
+            position: relative;
+            background: #f6d4b1;
+            color: var(--color);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            text-align: left;
+            border-left: 3px solid #007bff;
+            font-family: 'public-pixel', sans-serif;
+        }
+
+        /* Positioning entries left and right */
+        .entry:nth-child(odd) {
+            align-self: flex-start;
+            margin-right: auto;
+        }
+
+        .entry:nth-child(even) {
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        /* Timeline Dot */
+        .entry::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 12px;
+            width: 10px;
+            height: 10px;
+            background: #007bff;
+            border-radius: 50%;
+        }
+
+        /* Input Section */
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        textarea, input {
+            width: 100%;
+            max-width: 600px;
+            height: 80px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            font-family: 'public-pixel', sans-serif;
+            background: #f6d4b1;
+            color: var(--color);
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'chill', sans-serif;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .entry {
+                width: 90%;
+            }
+
+            .entry::before {
+                left: -8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Project Progress Timeline</h1>
+    
+    <button onclick="selectFile()">📂 Select Markdown File</button>
+    <div class="input-container">
+        <input type="text" id="new-entry" placeholder="Write an update..." onkeydown="handleEnter(event)">
+        <button onclick="addEntry()">➕ Add</button>
+    </div>
+    <div class="timeline" id="blog-content">📌 Select a file to load updates...</div>
+
+    <script>
+        let fileHandle = null;
+
+        async function selectFile() {
+            try {
+                [fileHandle] = await window.showOpenFilePicker({
+                    types: [{ description: "Markdown Files", accept: { "text/markdown": [".md"] } }],
+                    multiple: false
+                });
+
+                console.log("✅ File selected:", fileHandle.name);
+                await loadBlog();
+            } catch (error) {
+                console.error("❌ File selection error:", error);
+            }
+        }
+
+        async function loadBlog() {
+            try {
+                if (!fileHandle) {
+                    console.warn("⚠️ No file selected yet.");
+                    return;
+                }
+                const file = await fileHandle.getFile();
+                const text = await file.text();
+                displayMarkdownAsTimeline(text);
+            } catch (error) {
+                console.error("❌ Error loading file:", error);
+            }
+        }
+
+        async function addEntry() {
+            if (!fileHandle) {
+                alert("Please select a Markdown file first!");
+                return;
+            }
+
+            const inputField = document.getElementById("new-entry");
+            const newEntry = inputField.value.trim();
+            if (newEntry === "") return;
+
+            const timestamp = new Date().toLocaleString();
+            const formattedEntry = `**[${timestamp}]**\n${newEntry}\n\n`;
+
+            try {
+                // ✅ Update the file
+                const writable = await fileHandle.createWritable();
+                const file = await fileHandle.getFile();
+                const existingText = await file.text();
+
+                await writable.write(formattedEntry + existingText);
+                await writable.close();
+
+                console.log("✅ New entry added at the TOP.");
+                inputField.value = ""; // Clear input after adding
+
+                // ✅ Update the UI dynamically (NO RELOADING)
+                const timelineContainer = document.getElementById("blog-content");
+                const newEntryHTML = `<div class="entry">${marked.parse(formattedEntry)}</div>`;
+                timelineContainer.innerHTML = newEntryHTML + timelineContainer.innerHTML; // Add at top
+
+            } catch (error) {
+                console.error("❌ Error writing to file:", error);
+            }
+        }
+
+        function handleEnter(event) {
+            if (event.key === "Enter") {
+                addEntry();
+            }
+        }
+
+        function displayMarkdownAsTimeline(mdContent) {
+            const timelineContainer = document.getElementById("blog-content");
+            timelineContainer.innerHTML = "";
+
+            const entries = mdContent.trim().split("\n\n").filter(e => e.trim() !== "");
+
+            let timelineHTML = "<div class='timeline'>";
+            entries.forEach(entry => {
+                timelineHTML += `<div class="entry">${marked.parse(entry)}</div>`;
+            });
+            timelineHTML += "</div>";
+
+            timelineContainer.innerHTML = timelineHTML;
+        }
+
+    </script>
+
+</body>
+</html>
