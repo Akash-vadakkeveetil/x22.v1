@@ -392,29 +392,6 @@ a:active {
   align-items: center;
 }
 
-/* .nav__logo {
-  color: var(--white-color);
-  font-weight: var(--font-medium);
-} */
-
-
-/* nav close and toggle can be made into one but we make it to two for the box shadow only the toggle needs one , close dont need */
-.nav__close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white-color);
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-top: 35px;
-  padding: 1px 16px;
-  background-color:#525252;
-  border: none; 
-  border-radius: 4px;
-  width: auto;
-  height: 40px; 
-}
-
 .nav__toggle {
   display: flex;
   align-items: center;
@@ -851,33 +828,55 @@ html[data-scroll="true"] #tip-scroll {
             <i class="ri-menu-line"></i>
          </div>
 
-         <button class="top-button">Resume...</button>
+         <button class="top-button" id="resume-btn">Resume...</button>
         <style>
-          .nav__close {
-            font-family: "chill", sans-serif;
-            font-size: 18px;
-            display: inline-flex;
-            gap: 0.25rem;
-            box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
-            background-color: var(--color);
-            color: #faf0e6;
-            cursor: pointer;
-            transition: all 0.3s;
-            padding: 4px 24px;
-            border: #f6d4b1 solid 1px;
-            border-radius: 4px;
-            text-decoration: none;
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            height: 40px;
-            z-index: 101;
-          }
-            .nav__close:hover {
-            transform: scale(1.1);
-            box-shadow: 8px 8px 6px rgba(82, 82, 82, 0.25);
-            z-index: 102;
-            }
+
+.nav__close {
+  font-family: "chill", sans-serif;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  box-shadow: 6px 6px 0px rgba(250, 240, 230, 0.7); /* soft whiteish shadow */
+  background-color: #faf0e6; /* light base */
+  color: #525252; /* dark text/icon */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 4px 24px;
+  border: 2px solid #2b2b2b; /* darker, stronger border */
+  border-radius: 4px; /* same square feel */
+  text-decoration: none;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  height: 40px;
+  z-index: 101;
+}
+
+.nav__close i {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav__close:hover {
+  transform: scale(1.05);
+  box-shadow: 8px 8px 0px rgba(250, 240, 230, 0.85); /* stronger white glow */
+  border-color: #000; /* even darker border on hover */
+}
+
+.nav__close:hover i {
+  transform: rotate(90deg);
+  color: #000; /* darker X */
+}
+
+.nav__close:active {
+  transform: scale(0.95);
+  box-shadow: 3px 3px 0px rgba(250, 240, 230, 0.6);
+  border-color: #333; /* subtle active feedback */
+}
+
+
 
             /* Minimal bounce animation for #tip-scroll */
             #tip-scroll {
@@ -1084,28 +1083,29 @@ html[data-scroll="true"] #tip-scroll {
       </section>
 
       <section>
-        <h1>Skills</h1>
-        <body>
-    <div class="wrapper">
-        <div class="itemLeft item1"><h2>Git</h2></div>
-        <div class="itemLeft item2"><h2>Html</h2></div>
-        <div class="itemLeft item3">Css</div>
-        <div class="itemLeft item4">JavaScript</div>
-        <div class="itemLeft item5"></div>
-        <div class="itemLeft item6"></div>
-        <div class="itemLeft item7"></div>
-        <div class="itemLeft item8"></div>
-      </div>
-      <div class="wrapper">
-        <div class="itemRight item1"></div>
-        <div class="itemRight item2"></div>
-        <div class="itemRight item3"></div>
-        <div class="itemRight item4"></div>
-        <div class="itemRight item5"></div>
-        <div class="itemRight item6"></div>
-        <div class="itemRight item7"></div>
-        <div class="itemRight item8"></div>
-      </div>
+  <h1>Skills</h1>
+
+  <div class="wrapper">
+    <div class="itemLeft item1"><i class="ri-git-branch-line git"></i> Git</div>
+    <div class="itemLeft item2"><i class="ri-html5-line html"></i> HTML</div>
+    <div class="itemLeft item3"><i class="ri-css3-line css"></i> CSS</div>
+    <div class="itemLeft item4"><i class="ri-file-code-line js"></i> JavaScript</div>
+    <div class="itemLeft item5"><i class="ri-reactjs-line react"></i> React</div>
+    <div class="itemLeft item6"><i class="ri-node-tree-line node"></i> Node.js</div>
+    <div class="itemLeft item7"><i class="ri-database-line mongo"></i> MongoDB</div>
+    <div class="itemLeft item8"><i class="ri-flashlight-line mlops"></i> MLOps</div>
+  </div>
+
+  <div class="wrapper">
+    <div class="itemRight item1"><i class="ri-git-branch-line git"></i> Git</div>
+    <div class="itemRight item2"><i class="ri-html5-line html"></i> HTML</div>
+    <div class="itemRight item3"><i class="ri-css3-line css"></i> CSS</div>
+    <div class="itemRight item4"><i class="ri-file-code-line js"></i> JavaScript</div>
+    <div class="itemRight item5"><i class="ri-reactjs-line react"></i> React</div>
+    <div class="itemRight item6"><i class="ri-node-tree-line node"></i> Node.js</div>
+    <div class="itemRight item7"><i class="ri-database-line mongo"></i> MongoDB</div>
+    <div class="itemRight item8"><i class="ri-flashlight-line mlops"></i> MLOps</div>
+  </div>
       <style>
         *,
 *::before,
@@ -1125,13 +1125,13 @@ html[data-scroll="true"] #tip-scroll {
   height: 100px;
   position: relative;
   overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 1) 20%,
-    rgba(0, 0, 0, 1) 80%,
-    rgba(0, 0, 0, 0)
-  );
+mask-image: linear-gradient(
+  to right,
+  rgba(0,0,0,0) 0%,
+  rgba(0,0,0,1) 15%,
+  rgba(0,0,0,1) 85%,
+  rgba(0,0,0,0) 100%
+);
 }
 
 @keyframes scrollLeft {
@@ -1203,9 +1203,45 @@ html[data-scroll="true"] #tip-scroll {
 .item8 {
   animation-delay: calc(30s / 8 * (8 - 8) * -1);
 }
+
+/* Inline icons styling */
+.itemLeft i, .itemRight i {
+  margin-right: 6px;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+/* Optional: Color by tool */
+.itemLeft i.git, .itemRight i.git { color: #f05032; }
+.itemLeft i.html, .itemRight i.html { color: #e34f26; }
+.itemLeft i.css, .itemRight i.css { color: #1572b6; }
+.itemLeft i.js, .itemRight i.js { color: #f7df1e; }
+.itemLeft i.react, .itemRight i.react { color: #61dafb; }
+.itemLeft i.node, .itemRight i.node { color: #83cd29; }
+.itemLeft i.mongo, .itemRight i.mongo { color: #4db33d; }
+.itemLeft i.mlops, .itemRight i.mlops { color: #525252; }
+
+/* Optional: bold skill text */
+.itemLeft, .itemRight {
+  font-weight: 600;
+  color: #525252;
+  background-color: #faf0e6;
+  border: 1px solid #525252;
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+  border-radius: 6px;
+  width: 200px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  animation-timing-function: linear;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+}
+
       </style>
-</body>
-      </section>
+</section>
       <section>
         <h1 id="contact">Contact</h1>
         <p style="text-align: center">
@@ -1227,19 +1263,19 @@ html[data-scroll="true"] #tip-scroll {
       <h1 id="Socials">My Socials</h1>
       <br>
       <br>
-      <a href="https://www.linkedin.com/in/" class="sociallink"
+      <a href="https://www.linkedin.com/in/" target="_blank" class="sociallink"
       ><u><b>LinkedIn </b></u></a
       > 
       <br>
-      <a href="https://github.com/Akash-vadakkeveetil" class="sociallink"
+      <a href="https://github.com/Akash-vadakkeveetil" target="_blank" class="sociallink"
       ><u><b>Github </b></u></a
       > 
       <br>
-      <a href="https://medium.com/@akashvadakkeveetil" class="sociallink"
-      ><u><b>Medium(blogs)</b></u></a
+      <a href="https://dev.to/akash_vadakkeveetil" target="_blank" class="sociallink"
+      ><u><b>Dev.to(blogs)</b></u></a
       > 
       <br>
-      <a href="https://x.com/Akash_V_V" class="sociallink"
+      <a href="https://x.com/Akash_V_V" target="_blank" class="sociallink"
       ><u><b>Twitter(x) </b></u></a
       > 
       <section>
@@ -1270,6 +1306,19 @@ html[data-scroll="true"] #tip-scroll {
     navCloseBtn.style.display = 'none';
     navToggle.style.display = 'block';
   };
+
+  const resumeBtn = document.getElementById('resume-btn');
+
+// Hide Resume button when menu opens
+navToggle.addEventListener('click', () => {
+  resumeBtn.style.display = 'none';
+});
+
+// Show Resume button when menu closes
+navCloseBtn.addEventListener('click', () => {
+  resumeBtn.style.display = 'inline-flex';
+});
+
   
   // Close sidebar when clicking nav links
   document.querySelectorAll('.nav__link').forEach(link => {
