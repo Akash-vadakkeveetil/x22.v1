@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Projects | Akash’s Portfolio</title>
+  <link rel="stylesheet" href="ProjStyle.css" />
+</head>
+<body>
+
+  <section class="projects-section">
+    <h1 class="title">Projects</h1>
+
+    <!-- 🔍 Search and Filter Controls -->
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search projects..." />
+      
+      <div class="filters">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="web">Web and backend</button>
+        <button class="filter-btn" data-category="ml">Machine Learning</button>
+        <button class="filter-btn" data-category="cyber">Cybersecurity</button>
+        <button class="filter-btn" data-category="blockchain">Blockchain</button>
+      </div>
+    </div>
+
+    <!-- 🧩 Projects Grid -->
+    <div class="projects-container">
+
+      <!-- Example Project 1 -->
+      <div class="project-card" data-category="blockchain" data-title="Heisei Blockchain Inventory">
+        <img src="images/project1.jpg" alt="Heisei" class="project-img">
+        <div class="overlay">
+          <h2>Heisei Blockchain Inventory</h2>
+          <p>Java + Spring Boot + Blockchain layer for secure inventory tracking.</p>
+          <div class="buttons">
+            <a href="#" target="_blank" class="btn live">Live Demo</a>
+            <a href="https://github.com/Akash-vadakkeveetil/Heisei-Chain" target="_blank" class="btn code">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example Project 2 -->
+      <div class="project-card" data-category="web" data-title="PillPoint Medicine Tracker">
+        <img src="images/project2.jpg" alt="PillPoint" class="project-img">
+        <div class="overlay">
+          <h2>PillPoint</h2>
+          <p>Spring Boot + Thymeleaf web app for hospital pharmacy management.</p>
+          <div class="buttons">
+            <a href="#" target="_blank" class="btn live">Live Demo</a>
+            <a href="#" target="_blank" class="btn code">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example Project 3 -->
+      <div class="project-card" data-category="ml" data-title="Sentiment Analyzer">
+        <img src="images/project3.jpg" alt="Sentiment Analyzer" class="project-img">
+        <div class="overlay">
+          <h2>Sentiment Analyzer</h2>
+          <p>Python ML model classifying reviews as positive, negative, or neutral.</p>
+          <div class="buttons">
+            <a href="#" target="_blank" class="btn live">Live Demo</a>
+            <a href="#" target="_blank" class="btn code">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example Project 4 -->
+      <div class="project-card" data-category="cyber" data-title="Vulnerability Scanner">
+        <img src="images/project4.jpg" alt="Cyber Project" class="project-img">
+        <div class="overlay">
+          <h2>Vulnerability Scanner</h2>
+          <p>Python-based cybersecurity tool to detect weak web endpoints.</p>
+          <div class="buttons">
+            <a href="#" target="_blank" class="btn live">Live Demo</a>
+            <a href="#" target="_blank" class="btn code">Code</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="ProjScript.js"></script>
+</body>
+</html>

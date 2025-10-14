@@ -159,7 +159,7 @@ hr {
 
 p{
   padding: 10px;
-  text-align: left;
+  text-align: justify;
   line-height: 1.5;
   margin: auto;
   box-sizing: border-box;
@@ -168,7 +168,7 @@ p{
 .skills,
 p {
   padding: 16px;
-  text-align: left;
+  /* text-align: left; */
   line-height: 1.5;
   width: clamp(0px, 95vw, 680px);
   margin: auto;
@@ -665,30 +665,6 @@ html[data-scroll="true"] #tip-scroll {
   opacity: 0 !important;
 }
 
-/* @media screen and (max-width: 600px)
-{
-  h1{
-    font-size: 31px;
-    line-height: 50px;
-  }
-  #hero-backup {
-    bottom: 0;
-    width: clamp(0px, 95vw, 580px);
-    margin: auto;
-  } */
-  
-  /* #hero-backup h1,
-  #hero-backup h3 { */
-    /* margin-left: 3px;
-    margin-right: 3px; */
-    /* margin:0;
-    text-align: left;
-  }
-  #hero-backup ul {
-    margin-left: 32px;
-  } */
-/* } */
-
 @media (orientation: portrait) {
   #tip-scroll {
     display: block;
@@ -829,7 +805,7 @@ html[data-scroll="true"] #tip-scroll {
          </div>
 
          <button class="top-button" id="resume-btn">Resume...</button>
-        <style>
+<style>
 
 .nav__close {
   font-family: "chill", sans-serif;
@@ -928,41 +904,39 @@ html[data-scroll="true"] #tip-scroll {
         <p>
           This represents just a small selection of the projects I have worked
           on over the years. I have many more pieces of personal, university and
-          design work.
+          other work.
         </p>
         <hr />
 
-        <h2>The PillPoint</h2>
+        <h2>The Mediport</h2>
         <h3>2024</h3>
         <ul class="skills">
-          <li>Core Java</li>
-          <li>MongoDB</li>
-          <li>Spring Boot</li>
-          <li>Java Server Pages(JSP)</li>
+          <li>Express Js</li>
+          <li>Node Js</li>
+          <li>MySql</li>
           <li>Web Dev</li>
         </ul>
         <p>
-          Developed a comprehensive Hospital Pharmacy Management System 
-          using Java Spring Boot, designed to monitor and manage medicine 
-          stock levels across hospital pharmacies. The system incorporates 
-          role-based access for Admins, Pharmacies, and Suppliers, ensuring 
-          efficient inventory tracking, automated alerts for low stock, 
-          streamlined order management, and supplier inventory updates. 
-          Features include a dynamic threshold mechanism, expiry date tracking, 
-          and integration of robust CRUD operations to enhance operational 
-          efficiency in healthcare supply chains.
+          The MediPort is a web-based pharmacy and hospital inventory system that streamlines the tracking, 
+          management, and ordering of medicines. It replaces manual record-keeping with a centralized platform 
+          that monitors stock levels, expiry dates, and supplier details in real time.
+
+          The system automatically updates inventory after each transaction, sends alerts for low stock, and 
+          facilitates direct communication with suppliers for efficient restocking. With role-based access, 
+          MediPort offers secure, customized interfaces for administrators, pharmacists, and suppliers, while 
+          generating detailed reports to support data-driven decisions.
         </p>
-        <a href="https://google.com" class="collapse-btn btn">
+        <a href="https://google.com" target="_blank" class="collapse-btn btn">
           Live Demo...
         </a>
-        <a href="https://github.com/Akash-vadakkeveetil/The-Pillpoint" class="collapse-btn btn">
+        <a href="https://github.com/Akash-vadakkeveetil/The-Mediport" target="_blank" class="collapse-btn btn">
           See code...
         </a>
         
 
         <br />
 
-        <div class="image">
+        <!-- <div class="image">
 
           <img
             src="peakpx.jpg"
@@ -972,64 +946,80 @@ html[data-scroll="true"] #tip-scroll {
             style="aspect-ratio: 1330 / 623"
           />
  
-        </div>
+        </div> -->
         <hr />
 
-        <h2>Proj2</h2>
-        <h3>2020</h3>
+        <h2>Heisei</h2>
+        <h3>2025</h3>
         <ul class="skills">
-          <li>Agile</li>
-          <li>Design</li>
-          <li>Accessibility</li>
-          <li>UI/UX</li>
+          <li>Node Js</li>
+          <li>Express Js</li>
+          <li>Blockchain</li>
+          <li>MySql</li>
           <li>Web Dev</li>
         </ul>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-          Nullam viverra orci nec libero ullamcorper, 
-          vitae sollicitudin leo lobortis. Donec condimentum, 
-          justo ac ultrices vulputate, felis libero luctus magna, 
-          eu malesuada arcu libero ac lorem. Vestibulum eget consequat odio. 
-          Sed tincidunt velit et ligula viverra dapibus. Nunc id urna eget risus convallis pretium. 
-          Quisque scelerisque dolor nec nisi volutpat, at fermentum justo consectetur. Ut ac nulla velit.
-          Nulla aliquam nisl a orci sollicitudin, non egestas justo volutpat. Maecenas efficitur arcu sit 
-          amet magna sollicitudin, nec malesuada lorem vehicula. 
-          Vivamus ornare diam a diam bibendum, sed maximus risus fermentum. Sed sed nisi et ligula consequ.
-        </p>
-        <a href="https://google.com" class="collapse-btn btn">
+  <p>
+  <b>Heisei</b> is an advanced inventory management system powered by blockchain technology to ensure secure, transparent, and tamper-proof transaction records. Acting as a middle layer between the frontend/backend and the database, it uses a custom-built <b>Heisei Chain</b> in Java for transaction verification, while inventory data is stored off-chain for efficiency.
+  <br><br>
+  <b>Key Features:</b>
+  <br><br>
+  <b>Blockchain Integration:</b> Guarantees immutability of all inventory records.<br>
+  <b>Transaction Verification:</b> Each update is validated on-chain to prevent unauthorized changes.<br>
+  <b>Role-Based Access:</b> Secure login system for donors and camps.<br>
+  <b>Decentralized Trust:</b> Eliminates tampering through a transparent ledger.<br>
+  <b>Efficient Tracking:</b> Enables real-time monitoring and reliable supply management.
+  <br><br>
+  Heisei combines blockchain security with streamlined inventory control—enhancing transparency, trust, and operational efficiency.
+</p>
+
+        <a href="https://google.com" target="_blank" class="collapse-btn btn">
           Live Demo...
         </a>
-        <a href="https://google.com" class="collapse-btn btn">
+        <a href="https://github.com/Akash-vadakkeveetil/The-Heisei" target="_blank" class="collapse-btn btn">
           See code...
         </a>
         <br />
   
-          <div class="image">
+          <!-- <div class="image">
             <video width="100%" controls loop autoplay>
               <source src="/src/img/Glowbal.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-          </div>
+          </div> -->
           <hr />
   
-          <h2>Cyber Heist</h2>
-          <h3>2020</h3>
+          <h2>Heisei-Chain</h2>
+          <h3>2025</h3>
           <ul class="skills">
-            <li>Shader Dev</li>
-            <li>Design</li>
-            <li>User Testing</li>
-            <li>Game Dev</li>
+            <li>Java Springboot</li>
+            <li>Core Java</li>
+            <li>Sha-256</li>
+            <li>Web Dev</li>
           </ul>
-          <p>
-            For the subject Graphics and Interaction, I worked in a team to
-            produce a time based endless runner game called CyberHeist. The game
-            was built in Unity/C# and made use of a number of Azure APIs to add
-            online play functionality. I was responsible for most of the online
-            investigation and a large amount of the game logic, shader programming
-            and user testing. CyberHeist received a final mark of over 95% and the
-            trailer can be found below.
-          </p>
-          <div class="image">
+<p style="text-align: justify;">
+  <b>Heisei Chain</b> is a lightweight, private blockchain built with Java and Spring Boot to ensure secure, immutable, and verifiable transaction records for inventory management. 
+  It serves as the core of the <b>"Heisei"</b> system, making all stock updates tamper-proof and auditable.
+  <br><br>
+  <b>Key Features:</b>
+  <br><br>
+  <b>Custom Blockchain:</b> Built from scratch in Java with SHA-256 hashing for data integrity.<br>
+  <b>Immutable Ledger:</b> Cryptographically linked transactions prevent unauthorized changes.<br>
+  <b>Spring Boot Integration:</b> Enables seamless API communication with the inventory system.<br>
+  <b>Off-Chain Storage:</b> Transactions verified on-chain; inventory data stored in MySQL for efficiency.<br>
+  <b>Consensus Mechanism:</b> Kafka-based model ensures consistency across distributed environments.<br>
+  <b>Real-Time Verification:</b> Each transaction is validated before being added to the chain.
+  <br><br>
+  Heisei Chain strengthens supply chain transparency with a secure, decentralized, and tamper-resistant ledger.
+</p>
+
+          <a href="https://google.com" target="_blank" class="collapse-btn btn">
+            Live Demo...
+          </a>
+          <a href="https://github.com/Akash-vadakkeveetil/Heisei-Chain" target="_blank"   class="collapse-btn btn">
+            See code...
+          </a>
+        <br />
+          <!-- <div class="image">
             <iframe
               style="aspect-ratio: 16 / 9"
               width="100%"
@@ -1039,47 +1029,10 @@ html[data-scroll="true"] #tip-scroll {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>
-          </div>
+          </div> -->
           <hr />
-      
-            <h2>The Golden Pack</h2>
-            <h3>2012-13</h3>
-            <ul class="skills">
-              <li>Design</li>
-              <li>Illustration</li>
-            </ul>
-            <p>
-              When I was 12 years old, I played a lot of Minecraft however, I was
-              never very happy with the low resolution look of the game. I decided
-              to remedy this by creating a texture pack, which is a file containing
-              alternative looks or textures for the objects in the game. When I put
-              my work online, after some refinement I received my first 1000
-              downloads. Spotting a business opportunity, I added ads to the
-              download link. My texture pack was downloaded over 50,000 times,
-              earning me a few hundred dollars.
-            </p>
-    
-            <div class="image">
-              <img
-                src="/src/img/tgp.png"
-                width="100%"
-                alt="The Golden Pack image"
-                loading="lazy"
-                style="aspect-ratio: 800 / 600"
-              />
-            </div>        
           <!-- more image tags can be added below if needed -->
         </div>
-        
-        <!-- <h2>Great Balls of Fire</h2>
-        <h3>2013-14</h3>
-        <ul class="skills">
-          <li>Mobile Dev</li>
-          <li>Design</li>
-          <li>Illustration</li>
-          <li>Branding</li>
-        </ul>
-        <hr /> -->
       </section>
 
       <section>
@@ -1315,7 +1268,7 @@ navToggle.addEventListener('click', () => {
 });
 
 // Show Resume button when menu closes
-navCloseBtn.addEventListener('click', () => {
+  navCloseBtn.addEventListener('click', () => {
   resumeBtn.style.display = 'inline-flex';
 });
 
