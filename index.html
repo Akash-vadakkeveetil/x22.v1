@@ -1337,7 +1337,13 @@ navToggle.addEventListener('click', () => {
     }
   });
 
+  //cursor effect code
+  window.addEventListener("load", (event) => {
+  new cursoreffects.followingDotCursor({ color: ["#323232a6"] });
+});
+
     </script>
   </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script> //cursor effects js
 </html>
