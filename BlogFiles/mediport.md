@@ -1,5 +1,8 @@
-**[10/20/2025, 8:44:38 AM]**
-ok so let's write down some **stuff**
+**[10/20/2025, 10:46:58 AM]**
+yes it persists
+
+**[10/20/2025, 10:46:48 AM]**
+will this persist
 
 **[10/20/2025, 8:25:51 AM]**
 yeah so it works
@@ -14,3 +17,4 @@ lets look into next
 We are gonna first note down the essential systems in this project , the main functions and stuff
 
 This file tracks the content for the mediport (one stop note)
+

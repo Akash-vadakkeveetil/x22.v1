@@ -179,6 +179,7 @@
   <div class="input-container">
     <textarea id="new-entry" placeholder="Type your update here..."></textarea>
     <button onclick="addEntry()" aria-label="Add Entry">➕ Add Entry</button>
+    <button onclick="deleteLastEntry()">🗑 Delete Last Entry</button>
   </div>
 
   <div class="timeline" id="blog-content">
@@ -253,6 +254,41 @@
         console.error("❌ Error writing to file:", error);
       }
     }
+
+    async function deleteLastEntry() {
+    if (!fileHandle) {
+        alert("Please select a Markdown file first!");
+        return;
+    }
+
+    try {
+        const file = await fileHandle.getFile();
+        const text = await file.text();
+
+        // Split entries by double newlines
+        let entries = text.trim().split("\n\n");
+        if (entries.length === 0) {
+            alert("No entries to delete!");
+            return;
+        }
+
+        // Remove the first entry if newest is at top
+        entries.shift(); // or entries.pop() if newest is at bottom
+
+        // Write back the remaining entries
+        const writable = await fileHandle.createWritable();
+        await writable.write(entries.join("\n\n") + "\n\n");
+        await writable.close();
+
+        // Reload timeline
+        await loadBlog();
+
+        console.log("✅ Last entry deleted.");
+    } catch (error) {
+        console.error("❌ Error deleting entry:", error);
+    }
+}
+
 
     function displayMarkdownAsTimeline(mdContent) {
       const timelineContainer = document.getElementById("blog-content");
