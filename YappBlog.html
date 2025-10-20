@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YappBlog – Project Timeline</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    :root {
+      --primary: #007bff;
+      --bg: #f9e6d0;
+      --entry-bg: #f6d4b1;
+      --text: #3d3d3d;
+    }
+
+    @font-face {
+      font-family: "public-pixel";
+      src: url("fonts/public-pixel.woff");
+    }
+
+    @font-face {
+      font-family: "chill";
+      src: url("fonts/chill.woff");
+    }
+
+    body {
+      font-family: "chill", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: "public-pixel", sans-serif;
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    p.intro {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      color: #5a5a5a;
+    }
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 25px;
+      margin-bottom: 40px;
+      width: 100%;
+    }
+
+    textarea {
+      width: 100%;
+      max-width: 800px;
+      height: 150px; /* much bigger input area */
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      font-family: "chill", sans-serif;
+      background: var(--entry-bg);
+      color: var(--text);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: "chill", sans-serif;
+      transition: all 0.2s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 30px;
+      padding: 20px;
+      max-width: 900px;
+      width: 100%;
+      margin-inline: auto;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--primary);
+      transform: translateX(-50%);
+      opacity: 0.5;
+    }
+
+    .entry {
+      position: relative;
+      background: var(--entry-bg);
+      color: var(--text);
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 45%;
+      text-align: left;
+      border-left: 3px solid var(--primary);
+      font-family: "public-pixel", sans-serif;
+      transition: transform 0.2s ease;
+    }
+
+    .entry:hover {
+      transform: scale(1.02);
+    }
+
+    .entry:nth-child(odd) {
+      align-self: flex-start;
+      margin-right: auto;
+    }
+
+    .entry:nth-child(even) {
+      align-self: flex-end;
+      margin-left: auto;
+    }
+
+    .entry::before {
+      content: "";
+      position: absolute;
+      left: -12px;
+      top: 12px;
+      width: 10px;
+      height: 10px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+      .entry {
+        width: 90%;
+      }
+      .entry::before {
+        left: -8px;
+      }
+      textarea {
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>📝 YappBlog</h1>
+  <p class="intro">
+    A minimal project log where you can instantly jot down your daily thoughts,
+    updates, and milestones — all saved directly to your Markdown file.
+  </p>
+
+  <button onclick="selectFile()" aria-label="Select Markdown File">
+    📂 Select Markdown File
+  </button>
+
+  <div class="input-container">
+    <textarea id="new-entry" placeholder="Type your update here..."></textarea>
+    <button onclick="addEntry()" aria-label="Add Entry">➕ Add Entry</button>
+  </div>
+
+  <div class="timeline" id="blog-content">
+    📌 Select a file to load updates...
+  </div>
+
+  <script>
+    let fileHandle = null;
+
+    async function selectFile() {
+      if (!window.showOpenFilePicker) {
+        alert(
+          "Your browser does not support the File System Access API. Please use Chrome or Edge."
+        );
+        return;
+      }
+      try {
+        [fileHandle] = await window.showOpenFilePicker({
+          types: [
+            {
+              description: "Markdown Files",
+              accept: { "text/markdown": [".md"] },
+            },
+          ],
+          multiple: false,
+        });
+        console.log("✅ File selected:", fileHandle.name);
+        await loadBlog();
+      } catch (error) {
+        console.error("❌ File selection error:", error);
+      }
+    }
+
+    async function loadBlog() {
+      try {
+        if (!fileHandle) {
+          console.warn("⚠️ No file selected yet.");
+          return;
+        }
+        const file = await fileHandle.getFile();
+        const text = await file.text();
+        displayMarkdownAsTimeline(text);
+      } catch (error) {
+        console.error("❌ Error loading file:", error);
+      }
+    }
+
+    async function addEntry() {
+      if (!fileHandle) {
+        alert("Please select a Markdown file first!");
+        return;
+      }
+      const inputField = document.getElementById("new-entry");
+      const newEntry = inputField.value.trim();
+      if (newEntry === "") return;
+      const timestamp = new Date().toLocaleString();
+      const formattedEntry = `**[${timestamp}]**\n${newEntry}\n\n`;
+      try {
+        const writable = await fileHandle.createWritable();
+        const file = await fileHandle.getFile();
+        const existingText = await file.text();
+        await writable.write(formattedEntry + existingText);
+        await writable.close();
+        console.log("✅ New entry added at the TOP.");
+        inputField.value = "";
+        const timelineContainer = document.getElementById("blog-content");
+        const newEntryHTML = `<div class="entry">${marked.parse(
+          formattedEntry
+        )}</div>`;
+        timelineContainer.insertAdjacentHTML("afterbegin", newEntryHTML);
+      } catch (error) {
+        console.error("❌ Error writing to file:", error);
+      }
+    }
+
+    function displayMarkdownAsTimeline(mdContent) {
+      const timelineContainer = document.getElementById("blog-content");
+      timelineContainer.innerHTML = "";
+      const entries = mdContent
+        .trim()
+        .split("\n\n")
+        .filter((e) => e.trim() !== "");
+      entries.forEach((entry) => {
+        timelineContainer.insertAdjacentHTML(
+          "beforeend",
+          `<div class="entry">${marked.parse(entry)}</div>`
+        );
+      });
+    }
+  </script>
+</body>
+</html>
