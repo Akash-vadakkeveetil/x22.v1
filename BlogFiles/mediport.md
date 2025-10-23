@@ -1,3 +1,13 @@
+**[10/23/2025, 9:10:59 PM]**
+ok so lets get started with it 
+
+pharmacy - pharmacy01, 123
+supplier - supplier01, 123
+organization - org01, 123
+
+
+All good it is working now
+
 **[10/20/2025, 11:19:43 PM]**
 Okay so project is crated and i wanna make the folder structure. Mainly service, model, repository, controller
 
